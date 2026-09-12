@@ -37,7 +37,7 @@ class StockData:
         max_backtrack_days: int = 100,
         max_future_days: int = 30,
         features: Optional[List[FeatureType]] = None,
-        device: torch.device = torch.device("cuda:0"),
+        device: torch.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu"),
         preloaded_data: Optional[Tuple[torch.Tensor, pd.Index, pd.Index]] = None
     ) -> None:
         self._init_qlib()

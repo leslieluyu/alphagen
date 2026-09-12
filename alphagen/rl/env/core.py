@@ -20,7 +20,7 @@ class AlphaEnvCore(gym.Env):
     def __init__(
         self,
         pool: AlphaPoolBase,
-        device: torch.device = torch.device('cuda:0'),
+        device: torch.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu'),
         print_expr: bool = False
     ):
         super().__init__()

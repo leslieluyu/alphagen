@@ -191,7 +191,7 @@ def run_single_experiment(
     save_path = os.path.join("./out/results", name_prefix)
     os.makedirs(save_path, exist_ok=True)
 
-    device = torch.device("cuda:0")
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     close = Feature(FeatureType.CLOSE)
     target = Ref(close, -20) / close - 1
 
